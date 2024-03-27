@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jinjia宏的使用</title>
+</head>
+<!-- 导入外部文件宏 -->
+<!-- 
+运行前删掉这部分注释
+1. from '宏文件的路径' import 宏的名字 [as xxx]。
+{% from "users/users.html" import input as inp %}
+
+2. import "宏文件的路径" as xxx [with context]
+{% import "users/users.html" as usr with context %}
+ -->
+{% import 'macros/common.html' as mc with context %} 
+
+<body>
+    <h1>XHLX</h1>
+    <table>
+      <tr>
+        <td><input type="text"></td><td><input type="text"  name="" value=""></td>
+      </tr>
+      <tr>
+        <td><input type="text"></td><td><input type="password"  name="" value=""></td>
+      </tr>
+      <tr>
+        <td><input type="submit"  value="登录"></td>
+      </tr>
+    </table>
+  <hr>
+    <table>
+      <tr>
+        <td>用户名：</td><td>{{ mc.inp(name='uname') }}</td>
+      </tr>
+      <tr>
+        <td>密码：</td><td>{{ mc.inp('password','pwd') }}</td>
+      </tr>
+      <tr>
+        <td>{{mc.inp('submit',value='登录')}}</td>
+      </tr>
+    </table>
+</body>
+</html>
